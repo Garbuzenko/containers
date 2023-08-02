@@ -4,11 +4,14 @@ export default class Team {
   }
 
   add(characer) {
-    this.members.forEach((item) => {
-      if (JSON.stringify(item) === JSON.stringify(characer)) {
-        throw new Error('The character has already been added');
-      }
-    });
+    if (this.members.has(characer)){
+       throw new Error('The character has already been added');
+    }
+    // this.members.forEach((item) => {
+    //   if (JSON.stringify(item) === JSON.stringify(characer)) {
+    //     throw new Error('The character has already been added');
+    //   }
+    // });
     this.members.add(characer);
   }
 
@@ -16,7 +19,7 @@ export default class Team {
     arr.forEach((item) => {
       this.members.add(item);
     });
-    return this;
+    // return this;
   }
 
   toArray() {
